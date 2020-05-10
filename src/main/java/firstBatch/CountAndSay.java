@@ -59,9 +59,7 @@ public class CountAndSay {
 
     @Test
     public void test() {
-        CountAndSay countAndSay = new CountAndSay();
-        String res = countAndSay.countAndSay(4);
-        System.out.println(res);
+        System.out.println(this.countAndSay(4));
     }
 
 }

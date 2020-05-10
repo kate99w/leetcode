@@ -105,8 +105,6 @@ public class CompareVersionNumbers {
 
     @Test
     public void test() {
-        CompareVersionNumbers compareVersionNumbers = new CompareVersionNumbers();
-        int res = compareVersionNumbers.compareVersion("1", "1.0.2");
-        System.out.println(res);
+        System.out.println(this.compareVersion("1", "1.0.2"));
     }
 }

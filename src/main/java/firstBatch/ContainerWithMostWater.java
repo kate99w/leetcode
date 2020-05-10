@@ -33,8 +33,6 @@ public class ContainerWithMostWater {
 
     @Test
     public void test() {
-        ContainerWithMostWater containerWithMostWater = new ContainerWithMostWater();
-        int res = containerWithMostWater.maxArea(new int[] {1,8,6,2,5,4,8,3,7});
-        System.out.println(res);
+        System.out.println(this.maxArea(new int[]{}));
     }
 }

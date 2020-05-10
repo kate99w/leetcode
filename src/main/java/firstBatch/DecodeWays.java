@@ -56,8 +56,6 @@ public class DecodeWays {
 
     @Test
     public void test() {
-        DecodeWays decodeWays = new DecodeWays();
-        int res = decodeWays.numDecodings("226");
-        System.out.println(res);
+        System.out.println(this.numDecodings("226"));
     }
 }

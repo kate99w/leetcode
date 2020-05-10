@@ -65,10 +65,6 @@ public class Candy {
 
     @Test
     public void test() {
-        Candy candy = new Candy();
-        int result = candy.candy(new int[] {1,2,87,87,87,2,1});
-        //[1,2,87,87,87,2,1]
-        //[1,2,3, 1, 3, 2, 1]
-        System.out.println(result);
+        System.out.println(this.candy(new int[] {1,2,87,87,87,2,1}));
     }
 }

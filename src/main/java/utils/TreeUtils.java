@@ -9,7 +9,7 @@ package utils;
  */
 public class TreeUtils {
 
-    private static final String NULL_VAL = "NULL";
+    private static final String NULL_VAL = "null";
     private static final char SEPARATOR = ',';
 
     // Encodes a tree to a single string.

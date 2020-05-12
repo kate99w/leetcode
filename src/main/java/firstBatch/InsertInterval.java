@@ -1,5 +1,12 @@
 package firstBatch;
 
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static utils.PrintUtils.printMatrix;
+
 /*
  * 5/8/20
  * leetcode # 57. Insert Interval
@@ -24,15 +31,39 @@ public class InsertInterval {
     NOTE: input types have been changed on April 15, 2019. Please reset to default code definition to get new method signature.*/
 
     public int[][] insert(int[][] intervals, int[] newInterval) {
-        int[][] res = new int[intervals.length + 1][2];
-        int pos = 0;
+        List<int[]> list = new ArrayList<>();
         boolean inserted = false;
         for (int[] ints : intervals) {
             if (!inserted) {
-                if (newInterval[1] < ints[0]) {
-
-                }
+                if (newInterval[1] < ints[0]) { // case 1: [new] [ints]
+                    list.add(newInterval);
+                    list.add(ints);
+                    inserted = true;
+                } else if (newInterval[0] > ints[1]) { // case 6: [ints] [new]
+                    list.add(ints);
+                } else if (newInterval[0] <= ints[0] && newInterval[1] <= ints[1]) { // case 2: [new .[..].ints]
+                    newInterval[1] = ints[1];
+                } else if (ints[0] <= newInterval[0] && ints[1] <= newInterval[1]) {  // case 5: [ints..[.]...new]
+                    newInterval[0] = ints[0];
+                } else if (newInterval[0] >= ints[0] && newInterval[1] <= ints[1]) { // case 3: [ints...[new]...]
+                    newInterval[0] = ints[0];
+                    newInterval[1] = ints[1];
+                } // else case 4: [new...[ints]...]
+            } else {
+                list.add(ints);
             }
         }
+        if (!inserted) list.add(newInterval);
+        int[][] res = new int[list.size()][2];
+        int n = 0;
+        for (int[] i : list) {
+            res[n++] = i;
+        }
+        return res;
+    }
+
+    @Test
+    public void test() {
+        printMatrix(this.insert(new int[][]{{1,2},{3,5},{6,7},{8,10},{12,16}}, new int[]{4,8}));
     }
 }

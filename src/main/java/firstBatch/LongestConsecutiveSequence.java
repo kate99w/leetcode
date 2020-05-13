@@ -1,6 +1,10 @@
 package firstBatch;
 
+import org.junit.jupiter.api.Test;
+
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /*
@@ -22,19 +26,31 @@ public class LongestConsecutiveSequence {
     Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.*/
 
     // Input: [100, 4, 200, 1, 3, 2]
-    // Set: 100, 1, 4, 200, 1, 3, 2
+    // Set: 100, 4, 200, 1, 3, 2
+    // streak: 100, 4, 200, 1 , 3, 4, 2, 3,4
+
     public int longestConsecutive(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         Set<Integer> set = new HashSet<>();
+        for (int i : nums) set.add(i);
+
         int longest = 1;
         for (int i : nums) {
-            int curLength = 1;
-            int left = i - 1;
-            int right = i + 1;
-
-
+            int curLen = 1;
+            if (!set.contains(i-1)) {
+                while (set.contains(i + 1)) {
+                    i++;
+                    curLen++;
+                }
+            }
+            longest = Math.max(longest, curLen);
         }
 
         return longest;
+    }
+
+    @Test
+    public void test() {
+        System.out.println(this.longestConsecutive(new int[] {100, 4, 200, 1, 3, 2}));
     }
 }
